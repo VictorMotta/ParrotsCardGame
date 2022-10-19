@@ -24,8 +24,6 @@ body {
 .game {
     margin: 0 auto;
     width: 63%;
-    height: 500px;
-    margin-top: 50px;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-evenly;
@@ -35,6 +33,7 @@ body {
     width: 117px;
     height: 146px;
     margin-right: 34px;
+    margin-top: 50px;
     cursor: pointer;
     transform-style: preserve-3d;
     transition: all 0.5s;
