@@ -15,6 +15,7 @@ let cartasDuplicadas = [];
 let qtdPersonagens = 0;
 let jogadas = [];
 let pontuacao = 0;
+let tentativas = 0;
 
 function escolheDificuldade() {
     let condition = true;
@@ -77,25 +78,31 @@ function regrasDoJogo(cartaVirada) {
     console.log(jogadaClass);
 
     if (jogadas[1] === undefined) {
+        // Corrije erro de clicar no primeiro e não achar o segundo click por ser undefined
         return;
     } else if (jogadas.length > 2) {
+        // Não deixa virar mais de duas cartas
         for (let i = 0; i < jogadas.length; i++) {
             jogadas[i].classList.remove("jogada");
             jogadas[i].classList.remove("flip");
+
             if (jogadas[i] === undefined) {
                 return;
             }
         }
         jogadas = [];
     } else if (jogadas[0].id === jogadas[1].id) {
+        // Lógica de se acertar
         jogadaClass[0].classList.remove("jogada");
         jogadaClass[1].classList.remove("jogada");
         jogadaClass[0].classList.add("acertada");
         jogadaClass[1].classList.add("acertada");
         pontuacao++;
+        tentativas++;
         jogadas = [];
         console.log("Entrou no if");
     } else {
+        //
         setTimeout(function () {
             if (jogadaClass[1] === undefined) {
                 return;
@@ -114,11 +121,12 @@ function regrasDoJogo(cartaVirada) {
                     jogadaClass[1].classList.remove("jogada");
                 }
             }
-
             jogadas = [];
-        }, 2000);
+        }, 1000);
+        tentativas++;
     }
     console.log(pontuacao);
+    console.log(tentativas);
 }
 // escolhe 1 carta, escolhe a segunda e compara com a primeira
 // se for igual permanece virada, e aumenta 1 ponto
