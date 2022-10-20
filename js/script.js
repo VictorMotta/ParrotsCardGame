@@ -75,8 +75,9 @@ function loadGame() {
 function regrasDoJogo(cartaVirada) {
     jogadas.push(cartaVirada);
     jogadaClass = document.querySelectorAll(".jogada");
+    tentativas++;
     console.log(jogadaClass);
-
+    console.log(tentativas);
     if (jogadas[1] === undefined) {
         // Corrije erro de clicar no primeiro e não achar o segundo click por ser undefined
         return;
@@ -98,7 +99,6 @@ function regrasDoJogo(cartaVirada) {
         jogadaClass[0].classList.add("acertada");
         jogadaClass[1].classList.add("acertada");
         pontuacao++;
-        tentativas++;
         jogadas = [];
         console.log("Entrou no if");
     } else {
@@ -123,10 +123,8 @@ function regrasDoJogo(cartaVirada) {
             }
             jogadas = [];
         }, 1000);
-        tentativas++;
     }
     console.log(pontuacao);
-    console.log(tentativas);
 }
 // escolhe 1 carta, escolhe a segunda e compara com a primeira
 // se for igual permanece virada, e aumenta 1 ponto
