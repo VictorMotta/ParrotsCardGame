@@ -1,5 +1,7 @@
+const someMenu = document.querySelector(".container-menu-principal");
+const containerMostraFimDeJogo = document.querySelector(".container-mostra-fim-de-jogo");
 let jogadaClass;
-
+let escolha;
 let personagens = [
     "explodyparrot",
     "bobrossparrot",
@@ -20,33 +22,22 @@ let qtdTempo;
 let timer;
 let contador = 0;
 
-function tempo() {
-    const mostraTempo = document.querySelector(".contador span");
+function selecionaQtdCartas(select) {
+    const selecionado = document.querySelector(".selecionado");
 
-    timer = setInterval(() => {
-        mostraTempo.innerHTML = contador;
-        contador++;
-    }, 1000);
+    if (selecionado !== null) {
+        selecionado.classList.remove("selecionado");
+    }
+    escolha = select.innerHTML;
+
+    select.classList.add("selecionado");
 }
 
 function escolheDificuldade() {
-    let condition = true;
-    while (condition) {
-        let escolha = prompt(
-            "Escolha a quantidade de cartas que quer jogar(escolha entre 4 e 14 e somente números pares): "
-        );
-        let par = escolha % 2;
-        if (par == 0 && escolha >= 4 && escolha <= 14) {
-            qtdPersonagens = escolha / 2;
-            condition = false;
-            console.log(qtdPersonagens);
-            loadGame();
-            tempo();
-        } else {
-            alert("Escolha um número entre 4 e 14 e somente número par: ");
-            condition = true;
-        }
-    }
+    someMenu.classList.add("hidden");
+    qtdPersonagens = escolha / 2;
+    loadGame();
+    tempo();
 }
 
 function loadGame() {
@@ -56,6 +47,15 @@ function loadGame() {
     cartasSorteadas.forEach((caracter) => {
         criaCartas(caracter);
     });
+}
+
+function tempo() {
+    const mostraTempo = document.querySelector(".contador span");
+
+    timer = setInterval(() => {
+        mostraTempo.innerHTML = contador;
+        contador++;
+    }, 1000);
 }
 
 function adicionaCartas() {
@@ -83,6 +83,13 @@ function criaCartas(caracter) {
         </div>
     </div>
     `;
+}
+
+function viraCarta(virar) {
+    virar.classList.add("flip");
+    virar.classList.add("jogada");
+
+    regrasDoJogo(virar);
 }
 
 function regrasDoJogo(cartaVirada) {
@@ -155,6 +162,11 @@ function fimDoJogo() {
     }
 }
 
+function mostraFimDoJogo() {
+    containerMostraFimDeJogo.classList.remove("hidden");
+    const containerFimDeJogo = document.querySelector(".container-fim-de-jogo");
+}
+
 function jogarDeNovo() {
     const jogarNovamente = prompt("Gostaria de Jogar novamente?").toUpperCase();
     if (jogarNovamente === "SIM") {
@@ -171,6 +183,7 @@ function jogarDeNovo() {
 function resetaJogo() {
     const cards = document.querySelectorAll(".card");
     const elemento = document.querySelector(".game");
+    const selecionado = document.querySelector(".selecionado");
     carta = [];
     cartasDuplicadas = [];
     qtdPersonagens = 0;
@@ -185,14 +198,9 @@ function resetaJogo() {
 
     elemento.innerHTML = "";
 
-    escolheDificuldade();
+    someMenu.classList.remove("hidden");
+
+    if (selecionado !== null) {
+        selecionado.classList.remove("selecionado");
+    }
 }
-
-function viraCarta(virar) {
-    virar.classList.add("flip");
-    virar.classList.add("jogada");
-
-    regrasDoJogo(virar);
-}
-
-escolheDificuldade();

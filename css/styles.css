@@ -9,6 +9,76 @@ body {
     background-color: #eef9bf;
 }
 
+.container-menu-principal,
+.container-mostra-fim-de-jogo {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgba(255, 255, 255, 0.9);
+}
+.container-centralizar {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.container-menus {
+    width: 50%;
+    height: 50%;
+    background-color: #eef9bf;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #99cea8;
+    border-radius: 10px;
+}
+.container-menus h1 {
+    width: 70%;
+    margin-left: 15%;
+    margin-top: 5%;
+    color: #75b79e;
+    font-size: 30px;
+    text-align: center;
+}
+.container-menus .buttons {
+    width: 70%;
+    margin: 30px auto;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+.container-menus .buttons button {
+    width: 80px;
+    height: 50px;
+    border: none;
+    cursor: pointer;
+}
+
+.selecionado {
+    background-color: #28a745;
+    color: #fff;
+}
+
+#play {
+    margin: 30px auto;
+    width: 70%;
+    height: 90px;
+    font-size: 52px;
+    border: none;
+    cursor: pointer;
+    border-radius: 10px;
+    transition: 0.5s;
+}
+
+#play:hover,
+.container-fim-de-jogo .buttons button:hover,
+.mostra-mensagem-fim div button:hover {
+    background-color: #28a745;
+    color: #fff;
+}
+
 .contador {
     width: 100%;
     height: 100px;
@@ -85,6 +155,93 @@ body {
 .face img {
     width: 100px;
     height: 100px;
+}
+
+.hidden {
+    display: none;
+    visibility: none;
+}
+
+.container-fim-de-jogo {
+    width: 50%;
+    height: 50%;
+    text-align: center;
+    background-color: #eef9bf;
+    border: 1px solid #99cea8;
+    border-radius: 10px;
+}
+.container-fim-de-jogo h1 {
+    width: 70%;
+    margin-left: 15%;
+    margin-top: 8%;
+    color: #75b79e;
+    font-size: 30px;
+    text-align: center;
+}
+
+.container-fim-de-jogo h2 {
+    width: 70%;
+    margin-left: 15%;
+    margin-top: 10%;
+    color: #28a745;
+    font-size: 35px;
+    text-align: center;
+}
+
+.container-fim-de-jogo .buttons {
+    width: 70%;
+    margin: 30px auto;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+.container-fim-de-jogo .buttons button {
+    width: 40%;
+    height: 50px;
+    font-size: 15px;
+    margin-top: 20px;
+    border: none;
+    cursor: pointer;
+    border-radius: 10px;
+    transition: 0.5s;
+}
+
+.mostra-mensagem-fim {
+    width: 50%;
+    height: 50%;
+    text-align: center;
+    background-color: #eef9bf;
+    border: 1px solid #99cea8;
+    border-radius: 10px;
+}
+
+.mostra-mensagem-fim div {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.mostra-mensagem-fim div h1 {
+    font-size: 60px;
+    text-align: center;
+    color: #75b79e;
+}
+
+.mostra-mensagem-fim div button {
+    position: absolute;
+    bottom: 4%;
+    right: 4%;
+    width: 20%;
+    height: 50px;
+    font-size: 15px;
+    margin-top: 20px;
+    border: none;
+    cursor: pointer;
+    border-radius: 10px;
+    transition: 0.5s;
 }
 
 @media (max-width: 500px) {

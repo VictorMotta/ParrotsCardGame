@@ -8,6 +8,23 @@
         <link rel="stylesheet" href="./css/styles.css" />
     </head>
     <body>
+        <div class="container-menu-principal hidden">
+            <div class="container-centralizar">
+                <div class="container-menus">
+                    <h1>Escolha a dificuldade pela quantidade de carta:</h1>
+                    <div class="buttons">
+                        <button onclick="selecionaQtdCartas(this);" id="escolhe-4">4</button>
+                        <button onclick="selecionaQtdCartas(this);" id="escolhe-6">6</button>
+                        <button onclick="selecionaQtdCartas(this);" id="escolhe-8">8</button>
+                        <button onclick="selecionaQtdCartas(this);" id="escolhe-10">10</button>
+                        <button onclick="selecionaQtdCartas(this);" id="escolhe-12">12</button>
+                        <button onclick="selecionaQtdCartas(this);" id="escolhe-14">14</button>
+                    </div>
+
+                    <button onclick="escolheDificuldade()" id="play">PLAY</button>
+                </div>
+            </div>
+        </div>
         <div class="contador">
             <h1>TIME: <span>0</span></h1>
         </div>
@@ -15,6 +32,25 @@
             <h1>PARROT CARD GAME</h1>
             <div class="game"></div>
             <!-- Fim div game -->
+        </div>
+        <div class="container-mostra-fim-de-jogo">
+            <div class="container-centralizar">
+                <div class="container-fim-de-jogo">
+                    <h1>Você ganhou em 30 jogadas, e em 50 segundos!</h1>
+
+                    <h2>Gostaria de jogar novamente?</h2>
+                    <div class="buttons">
+                        <button>SIM</button>
+                        <button>NÃO</button>
+                    </div>
+                </div>
+                <div class="mostra-mensagem-fim hidden">
+                    <div>
+                        <h1>Fim de Jogo!</h1>
+                        <button>Reset</button>
+                    </div>
+                </div>
+            </div>
         </div>
         <script src="./js/script.js"></script>
     </body>
