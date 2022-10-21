@@ -8,7 +8,7 @@
         <link rel="stylesheet" href="./css/styles.css" />
     </head>
     <body>
-        <div class="container-menu-principal hidden">
+        <div class="container-menu-principal">
             <div class="container-centralizar">
                 <div class="container-menus">
                     <h1>Escolha a dificuldade pela quantidade de carta:</h1>
@@ -33,21 +33,21 @@
             <div class="game"></div>
             <!-- Fim div game -->
         </div>
-        <div class="container-mostra-fim-de-jogo">
+        <div class="container-mostra-fim-de-jogo hidden">
             <div class="container-centralizar">
                 <div class="container-fim-de-jogo">
                     <h1>Você ganhou em 30 jogadas, e em 50 segundos!</h1>
 
                     <h2>Gostaria de jogar novamente?</h2>
                     <div class="buttons">
-                        <button>SIM</button>
-                        <button>NÃO</button>
+                        <button onclick="resetaJogo()">SIM</button>
+                        <button onclick="naoQuerJogar();">NÃO</button>
                     </div>
                 </div>
                 <div class="mostra-mensagem-fim hidden">
                     <div>
                         <h1>Fim de Jogo!</h1>
-                        <button>Reset</button>
+                        <button onclick="resetaJogo()">Play</button>
                     </div>
                 </div>
             </div>

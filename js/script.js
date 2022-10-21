@@ -1,5 +1,7 @@
 const someMenu = document.querySelector(".container-menu-principal");
 const containerMostraFimDeJogo = document.querySelector(".container-mostra-fim-de-jogo");
+const containerJogoFim = document.querySelector(".container-fim-de-jogo");
+const mostraMensagemFim = document.querySelector(".mostra-mensagem-fim");
 let jogadaClass;
 let escolha;
 let personagens = [
@@ -154,30 +156,19 @@ function fimDoJogo() {
     // e comparar a qtd com todos os cards do jogo
     if (acertou.length == totalCartas.length) {
         clearInterval(timer);
-        setTimeout(() => {
-            alert(`Você ganhou em ${tentativas} jogadas, e em ${contador - 1} segundos.`);
-            jogarDeNovo();
-        }, 1000);
+        setTimeout(mostraFimDoJogo, 1000);
         // caso for igual o você acertou tudo
     }
 }
 
 function mostraFimDoJogo() {
-    containerMostraFimDeJogo.classList.remove("hidden");
     const containerFimDeJogo = document.querySelector(".container-fim-de-jogo");
-}
+    const mostraMensagemAcertos = containerFimDeJogo.querySelector("h1");
+    containerMostraFimDeJogo.classList.remove("hidden");
 
-function jogarDeNovo() {
-    const jogarNovamente = prompt("Gostaria de Jogar novamente?").toUpperCase();
-    if (jogarNovamente === "SIM") {
-        resetaJogo();
-    } else if (jogarNovamente === "NÃO" || jogarNovamente === "NAO") {
-        alert("Obrigado por jogar!");
-        return;
-    } else {
-        alert("Digite apenas sim ou não!");
-        jogarDeNovo();
-    }
+    mostraMensagemAcertos.innerHTML = `Você ganhou em ${tentativas} jogadas, e em ${
+        contador - 1
+    } segundos!!`;
 }
 
 function resetaJogo() {
@@ -196,11 +187,23 @@ function resetaJogo() {
         cards[i].classList.remove("flip");
     }
 
-    elemento.innerHTML = "";
+    if (containerJogoFim.classList.contains("hidden")) {
+        containerJogoFim.classList.remove("hidden");
+    }
+    if (!mostraMensagemFim.classList.contains("hidden")) {
+        mostraMensagemFim.classList.add("hidden");
+    }
 
+    elemento.innerHTML = "";
+    containerMostraFimDeJogo.classList.add("hidden");
     someMenu.classList.remove("hidden");
 
     if (selecionado !== null) {
         selecionado.classList.remove("selecionado");
     }
+}
+
+function naoQuerJogar() {
+    containerJogoFim.classList.add("hidden");
+    mostraMensagemFim.classList.remove("hidden");
 }
