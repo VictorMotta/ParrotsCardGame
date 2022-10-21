@@ -96,8 +96,8 @@ function regrasDoJogo(cartaVirada) {
         // Lógica de se acertar
         jogadaClass[0].classList.remove("jogada");
         jogadaClass[1].classList.remove("jogada");
-        jogadaClass[0].classList.add("acertada");
-        jogadaClass[1].classList.add("acertada");
+        jogadaClass[0].classList.add("acertou");
+        jogadaClass[1].classList.add("acertou");
         pontuacao++;
         jogadas = [];
         console.log("Entrou no if");
@@ -124,12 +124,22 @@ function regrasDoJogo(cartaVirada) {
             jogadas = [];
         }, 1000);
     }
-    console.log(pontuacao);
+    fimDoJogo();
 }
-// escolhe 1 carta, escolhe a segunda e compara com a primeira
-// se for igual permanece virada, e aumenta 1 ponto
-// se for diferente as duas viram e tenta novamente
-// caso todas estiverem virada é fim de jogo
+
+function fimDoJogo() {
+    // Pegar todos os acertou
+    const acertou = document.querySelectorAll(".acertou");
+    const totalCartas = document.querySelectorAll(".card");
+
+    if (acertou.length == totalCartas.length) {
+        setTimeout(() => {
+            alert(`Você ganhou em ${tentativas} jogadas!`);
+        }, 1000);
+    }
+    // e comparar a qtd com todos os cards do jogo
+    // caso for igual o você acertou tudo
+}
 
 function viraCarta(virar) {
     virar.classList.add("flip");
