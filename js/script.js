@@ -98,8 +98,6 @@ function regrasDoJogo(cartaVirada) {
     jogadas.push(cartaVirada);
     jogadaClass = document.querySelectorAll(".jogada");
     tentativas++;
-    console.log(jogadaClass);
-    console.log(tentativas);
     if (jogadas[1] === undefined) {
         // Corrije erro de clicar no primeiro e não achar o segundo click por ser undefined
         return;
@@ -122,7 +120,6 @@ function regrasDoJogo(cartaVirada) {
         jogadaClass[1].classList.add("acertou");
         pontuacao++;
         jogadas = [];
-        console.log("Entrou no if");
     } else {
         //
         setTimeout(function () {
