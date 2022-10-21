@@ -252,6 +252,7 @@ body {
     .container-fim-de-jogo,
     .mostra-mensagem-fim {
         width: 100%;
+        height: 80%;
     }
     .container-menus h1 {
         width: 80%;
