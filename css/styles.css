@@ -244,9 +244,33 @@ body {
     transition: 0.5s;
 }
 
-@media (max-width: 500px) {
+@media (max-width: 600px) {
     .container-principal h1 {
         font-size: 36px;
+    }
+    .container-menus,
+    .container-fim-de-jogo,
+    .mostra-mensagem-fim {
+        width: 100%;
+    }
+    .container-menus h1 {
+        width: 80%;
+        font-size: 30px;
+        margin: auto;
+    }
+    .container-fim-de-jogo h1 {
+        width: 80%;
+        margin: 20% auto 0 auto;
+    }
+    .container-fim-de-jogo h2 {
+        width: 80%;
+        margin: 10% auto 0 auto;
+    }
+    .container-menus .buttons {
+        width: 80%;
+    }
+    .container-menus .buttons button {
+        margin-top: 15px;
     }
 
     .card {
