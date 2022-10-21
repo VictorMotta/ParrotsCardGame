@@ -9,6 +9,27 @@ body {
     background-color: #eef9bf;
 }
 
+.contador {
+    width: 100%;
+    height: 100px;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+}
+
+.contador h1 {
+    font-size: 60px;
+    font-weight: 700;
+    color: #77b255;
+    margin-right: 5%;
+    text-shadow: 2px 2px 5px #75b79e;
+}
+
+.contador span {
+    color: #ffffff;
+    text-shadow: 2px 2px 5px black;
+    margin-left: 30px;
+}
 .container-principal {
     width: 100%;
     margin-top: 40px;

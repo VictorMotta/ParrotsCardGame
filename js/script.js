@@ -16,6 +16,18 @@ let qtdPersonagens = 0;
 let jogadas = [];
 let pontuacao = 0;
 let tentativas = 0;
+let qtdTempo;
+let timer;
+let contador = 0;
+
+function tempo() {
+    const mostraTempo = document.querySelector(".contador span");
+
+    timer = setInterval(() => {
+        mostraTempo.innerHTML = contador;
+        contador++;
+    }, 1000);
+}
 
 function escolheDificuldade() {
     let condition = true;
@@ -29,11 +41,33 @@ function escolheDificuldade() {
             condition = false;
             console.log(qtdPersonagens);
             loadGame();
+            tempo();
         } else {
             alert("Escolha um número entre 4 e 14 e somente número par: ");
             condition = true;
         }
     }
+}
+
+function loadGame() {
+    adicionaCartas();
+    const cartasSorteadas = sorteiaCartas();
+
+    cartasSorteadas.forEach((caracter) => {
+        criaCartas(caracter);
+    });
+}
+
+function adicionaCartas() {
+    for (let i = 0; i < qtdPersonagens; i++) {
+        carta.push(personagens[i]);
+    }
+}
+
+function sorteiaCartas() {
+    cartasDuplicadas = [...carta, ...carta];
+    const cartasSorteadas = cartasDuplicadas.sort((a, b) => Math.random() - 0.5);
+    return cartasSorteadas;
 }
 
 function criaCartas(caracter) {
@@ -49,27 +83,6 @@ function criaCartas(caracter) {
         </div>
     </div>
     `;
-}
-
-function adicionaCartas() {
-    for (let i = 0; i < qtdPersonagens; i++) {
-        carta.push(personagens[i]);
-    }
-}
-
-function sorteiaCartas() {
-    cartasDuplicadas = [...carta, ...carta];
-    const cartasSorteadas = cartasDuplicadas.sort((a, b) => Math.random() - 0.5);
-    return cartasSorteadas;
-}
-
-function loadGame() {
-    adicionaCartas();
-    const cartasSorteadas = sorteiaCartas();
-
-    cartasSorteadas.forEach((caracter) => {
-        criaCartas(caracter);
-    });
 }
 
 function regrasDoJogo(cartaVirada) {
@@ -131,14 +144,48 @@ function fimDoJogo() {
     // Pegar todos os acertou
     const acertou = document.querySelectorAll(".acertou");
     const totalCartas = document.querySelectorAll(".card");
-
-    if (acertou.length == totalCartas.length) {
-        setTimeout(() => {
-            alert(`Você ganhou em ${tentativas} jogadas!`);
-        }, 1000);
-    }
     // e comparar a qtd com todos os cards do jogo
-    // caso for igual o você acertou tudo
+    if (acertou.length == totalCartas.length) {
+        clearInterval(timer);
+        setTimeout(() => {
+            alert(`Você ganhou em ${tentativas} jogadas, e em ${contador - 1} segundos.`);
+            jogarDeNovo();
+        }, 1000);
+        // caso for igual o você acertou tudo
+    }
+}
+
+function jogarDeNovo() {
+    const jogarNovamente = prompt("Gostaria de Jogar novamente?").toUpperCase();
+    if (jogarNovamente === "SIM") {
+        resetaJogo();
+    } else if (jogarNovamente === "NÃO" || jogarNovamente === "NAO") {
+        alert("Obrigado por jogar!");
+        return;
+    } else {
+        alert("Digite apenas sim ou não!");
+        jogarDeNovo();
+    }
+}
+
+function resetaJogo() {
+    const cards = document.querySelectorAll(".card");
+    const elemento = document.querySelector(".game");
+    carta = [];
+    cartasDuplicadas = [];
+    qtdPersonagens = 0;
+    pontuacao = 0;
+    tentativas = 0;
+    contador = 0;
+
+    for (let i = 0; i < cards.length; i++) {
+        cards[i].classList.remove("acertou");
+        cards[i].classList.remove("flip");
+    }
+
+    elemento.innerHTML = "";
+
+    escolheDificuldade();
 }
 
 function viraCarta(virar) {
